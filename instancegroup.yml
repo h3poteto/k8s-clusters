@@ -1,0 +1,47 @@
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-02-19T12:59:21Z
+  labels:
+    kops.k8s.io/cluster: external-prd.cluster.k8s.local
+  name: master-ap-northeast-1a
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
+  machineType: m5.large
+  maxPrice: "0.1"
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1a
+  role: Master
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1a
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-02-19T12:59:21Z
+  labels:
+    kops.k8s.io/cluster: external-prd.cluster.k8s.local
+  name: nodes
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
+  image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
+  machineType: t3.medium
+  maxPrice: "0.05"
+  maxSize: 2
+  minSize: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes
+  role: Node
+  securityGroupOverride: sg-02c91c8f054c85937
+  subnets:
+  - ap-northeast-1a
+  - ap-northeast-1c
+  - ap-northeast-1d
