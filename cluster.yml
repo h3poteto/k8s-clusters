@@ -8,6 +8,8 @@ spec:
     loadBalancer:
       securityGroupOverride: sg-08585f22f2c36a263
       type: Public
+  authentication:
+    aws: {}
   authorization:
     rbac: {}
   channel: stable
