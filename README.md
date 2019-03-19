@@ -37,7 +37,7 @@ Sometimes the command show some differences about iam role, please ignore it. I 
 
 ```bash
 # update master instances
-$ kops rolling-update cluster base-prd.cluster.k8s.local --instance-group-roles=Node --force --yes
+$ kops rolling-update cluster base-prd.cluster.k8s.local --instance-group-roles=Master --force --yes
 # update node instances
 $ kops rolling-update cluster base-prd.cluster.k8s.local --instance-group-roles=Node --force --yes
 ```
