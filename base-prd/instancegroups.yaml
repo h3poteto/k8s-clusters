@@ -16,6 +16,8 @@ spec:
   nodeLabels:
     kops.k8s.io/instancegroup: master-ap-northeast-1a
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
   securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1a
@@ -40,6 +42,8 @@ spec:
   nodeLabels:
     kops.k8s.io/instancegroup: master-ap-northeast-1c
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
   securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1c
@@ -64,6 +68,8 @@ spec:
   nodeLabels:
     kops.k8s.io/instancegroup: master-ap-northeast-1d
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
   securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1d
@@ -88,6 +94,8 @@ spec:
   nodeLabels:
     kops.k8s.io/instancegroup: nodes
   role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp2
   securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1a
