@@ -9,8 +9,8 @@ spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
   image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
-  machineType: t2.medium
-  maxPrice: "0.05"
+  machineType: t3.small
+  maxPrice: "0.025"
   maxSize: 1
   minSize: 1
   nodeLabels:
@@ -35,8 +35,8 @@ spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
   image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
-  machineType: t2.medium
-  maxPrice: "0.05"
+  machineType: t3.small
+  maxPrice: "0.025"
   maxSize: 1
   minSize: 1
   nodeLabels:
@@ -61,8 +61,8 @@ spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
   image: kope.io/k8s-1.11-debian-stretch-amd64-hvm-ebs-2018-08-17
-  machineType: t2.medium
-  maxPrice: "0.05"
+  machineType: t3.small
+  maxPrice: "0.025"
   maxSize: 1
   minSize: 1
   nodeLabels:
