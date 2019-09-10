@@ -27,6 +27,10 @@ spec:
       name: d
     memoryRequest: 100Mi
     name: main
+    # Now I can not use provider: Manager.
+    # etcd-manager says errors, so kube-apiserver could not create storage backend.
+    # like: https://github.com/kubernetes/kops/issues/6994
+    # So I use legacy mode.
     provider: Legacy
   - cpuRequest: 100m
     etcdMembers:
