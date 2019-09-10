@@ -2,6 +2,7 @@ apiVersion: kops/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: 2019-03-16T01:40:14Z
+  generation: 2
   name: base-prd.cluster.k8s.local
 spec:
   api:
@@ -41,7 +42,7 @@ spec:
     authorizationMode: Webhook
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.11.7
+  kubernetesVersion: 1.11.10
   masterInternalName: api.internal.base-prd.cluster.k8s.local
   masterPublicName: api.base-prd.cluster.k8s.local
   networkCIDR: 10.0.0.0/16
