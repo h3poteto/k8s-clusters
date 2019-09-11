@@ -1,21 +1,20 @@
 apiVersion: kops/v1alpha2
 kind: Cluster
 metadata:
-  creationTimestamp: 2019-09-10T14:40:52Z
-  generation: 5
-  name: base-prd.cluster.k8s.local
+  creationTimestamp: 2019-09-11T04:12:51Z
+  generation: 1
+  name: external-prd.k8s.h3poteto.dev
 spec:
   api:
-    loadBalancer:
-      securityGroupOverride: sg-08585f22f2c36a263
-      type: Public
+    dns: {}
   authentication:
     aws: {}
   authorization:
     rbac: {}
   channel: stable
   cloudProvider: aws
-  configBase: s3://k8s-cluster-base-prd/base-prd.cluster.k8s.local
+  configBase: s3://h3poteto-k8s-clusters/external-prd.k8s.h3poteto.dev
+  dnsZone: Z21DTFU4BHSZ51
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
@@ -27,7 +26,6 @@ spec:
       name: d
     memoryRequest: 100Mi
     name: main
-    provider: Legacy
   - cpuRequest: 100m
     etcdMembers:
     - instanceGroup: master-ap-northeast-1a
@@ -38,7 +36,6 @@ spec:
       name: d
     memoryRequest: 100Mi
     name: events
-    provider: Legacy
   iam:
     allowContainerRegistry: true
     legacy: false
@@ -48,9 +45,9 @@ spec:
     authorizationMode: Webhook
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.12.10
-  masterInternalName: api.internal.base-prd.cluster.k8s.local
-  masterPublicName: api.base-prd.cluster.k8s.local
+  kubernetesVersion: 1.13.10
+  masterInternalName: api.internal.external-prd.k8s.h3poteto.dev
+  masterPublicName: api.external-prd.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
   networking:

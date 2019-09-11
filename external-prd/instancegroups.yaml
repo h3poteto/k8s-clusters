@@ -1,10 +1,10 @@
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-10T14:40:52Z
-  generation: 2
+  creationTimestamp: 2019-09-11T04:12:51Z
+  generation: 1
   labels:
-    kops.k8s.io/cluster: base-prd.cluster.k8s.local
+    kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1a
 spec:
   iam:
@@ -28,10 +28,10 @@ spec:
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-10T14:40:53Z
-  generation: 2
+  creationTimestamp: 2019-09-11T04:12:51Z
+  generation: 1
   labels:
-    kops.k8s.io/cluster: base-prd.cluster.k8s.local
+    kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1c
 spec:
   iam:
@@ -55,10 +55,10 @@ spec:
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-10T14:40:53Z
-  generation: 2
+  creationTimestamp: 2019-09-11T04:12:51Z
+  generation: 1
   labels:
-    kops.k8s.io/cluster: base-prd.cluster.k8s.local
+    kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1d
 spec:
   iam:
@@ -73,7 +73,7 @@ spec:
   role: Master
   rootVolumeSize: 20
   rootVolumeType: gp2
-  securityGroupOverride: sg-0110c581f1db6223d
+  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1d
 
@@ -82,10 +82,10 @@ spec:
 apiVersion: kops/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-10T14:40:53Z
-  generation: 3
+  creationTimestamp: 2019-09-11T04:12:51Z
+  generation: 2
   labels:
-    kops.k8s.io/cluster: base-prd.cluster.k8s.local
+    kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: nodes
 spec:
   iam:
