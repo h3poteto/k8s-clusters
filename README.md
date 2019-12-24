@@ -6,21 +6,21 @@ You can edit cluster or instancegroup.
 Edit cluster.
 
 ```bash
-$ kops edit cluster base-prd.cluster.k8s.local
+$ kops edit cluster external-prd.k8s.h3poteto.dev
 ```
 
 Edit master instancegroup. You have to edit each master instance.
 
 ```bash
-$ kops edit instancegroup master-ap-northeast-1a --name base-prd.cluster.k8s.local
-$ kops edit instancegroup master-ap-northeast-1c --name base-prd.cluster.k8s.local
+$ kops edit instancegroup master-ap-northeast-1a --name external-prd.k8s.h3poteto.dev
+$ kops edit instancegroup master-ap-northeast-1c --name external-prd.k8s.h3poteto.dev
 ...
 ```
 Edit node instancegroup.
 
 
 ```bash
-$ kops edit instancegroup nodes --name base-prd.cluster.k8s.local
+$ kops edit instancegroup nodes --name external-prd.k8s.h3poteto.dev
 ```
 
 ## Update cluster
@@ -37,7 +37,7 @@ Sometimes the command show some differences about iam role, please ignore it. I 
 
 ```bash
 # update master instances
-$ kops rolling-update cluster base-prd.cluster.k8s.local --instance-group-roles=Master --force --yes
+$ kops rolling-update cluster external-prd.k8s.h3poteto.dev --instance-group-roles=Master --force --yes
 # update node instances
-$ kops rolling-update cluster base-prd.cluster.k8s.local --instance-group-roles=Node --force --yes
+$ kops rolling-update cluster external-prd.k8s.h3poteto.dev --instance-group-roles=Node --force --yes
 ```
