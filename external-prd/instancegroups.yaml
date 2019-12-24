@@ -1,15 +1,15 @@
-apiVersion: kops/v1alpha2
+apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-11T04:12:51Z
-  generation: 1
+  creationTimestamp: "2019-09-11T04:12:51Z"
+  generation: 4
   labels:
     kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1a
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  image: kope.io/k8s-1.13-debian-stretch-amd64-hvm-ebs-2019-09-26
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -25,18 +25,18 @@ spec:
 
 ---
 
-apiVersion: kops/v1alpha2
+apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-11T04:12:51Z
-  generation: 1
+  creationTimestamp: "2019-09-11T04:12:51Z"
+  generation: 4
   labels:
     kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1c
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  image: kope.io/k8s-1.13-debian-stretch-amd64-hvm-ebs-2019-09-26
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -52,18 +52,18 @@ spec:
 
 ---
 
-apiVersion: kops/v1alpha2
+apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-11T04:12:51Z
-  generation: 1
+  creationTimestamp: "2019-09-11T04:12:51Z"
+  generation: 4
   labels:
     kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: master-ap-northeast-1d
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  image: kope.io/k8s-1.13-debian-stretch-amd64-hvm-ebs-2019-09-26
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -79,18 +79,18 @@ spec:
 
 ---
 
-apiVersion: kops/v1alpha2
+apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
-  creationTimestamp: 2019-09-11T04:12:51Z
-  generation: 2
+  creationTimestamp: "2019-09-11T04:12:51Z"
+  generation: 5
   labels:
     kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: nodes
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
-  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  image: kope.io/k8s-1.13-debian-stretch-amd64-hvm-ebs-2019-09-26
   machineType: t2.medium
   maxPrice: "0.05"
   maxSize: 5
