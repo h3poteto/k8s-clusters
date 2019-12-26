@@ -2,7 +2,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: "2019-09-11T04:12:51Z"
-  generation: 2
+  generation: 3
   name: external-prd.k8s.h3poteto.dev
 spec:
   api:
@@ -45,7 +45,7 @@ spec:
     authorizationMode: Webhook
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.13.12
+  kubernetesVersion: 1.14.10
   masterInternalName: api.internal.external-prd.k8s.h3poteto.dev
   masterPublicName: api.external-prd.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
