@@ -83,7 +83,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   creationTimestamp: "2019-09-11T04:12:51Z"
-  generation: 7
+  generation: 8
   labels:
     kops.k8s.io/cluster: external-prd.k8s.h3poteto.dev
   name: nodes
@@ -91,7 +91,7 @@ spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
   image: kope.io/k8s-1.15-debian-stretch-amd64-hvm-ebs-2019-09-26
-  machineType: t2.medium
+  machineType: t3.medium
   maxPrice: "0.05"
   maxSize: 5
   minSize: 2
