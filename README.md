@@ -1,3 +1,14 @@
+## Create cluster
+```
+$ kops create cluster external-prd-20200329.k8s.h3poteto.dev --zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-count 3 --master-zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-size t3.medium --master-size t3.small
+```
+
+Edit this cluster before apply. And apply it.
+
+```
+$ kops update cluster --lifecycle-overrides IAMRole=ExistsAndWarnIfChanges,IAMRolePolicy=ExistsAndWarnIfChanges,IAMInstanceProfileRole=ExistsAndWarnIfChanges  --name external-prd-20200329.k8s.h3poteto.dev --yes
+```
+
 
 ## Edit cluster
 
@@ -6,21 +17,21 @@ You can edit cluster or instancegroup.
 Edit cluster.
 
 ```bash
-$ kops edit cluster external-prd.k8s.h3poteto.dev
+$ kops edit cluster external-prd-20200329.k8s.h3poteto.dev
 ```
 
 Edit master instancegroup. You have to edit each master instance.
 
 ```bash
-$ kops edit instancegroup master-ap-northeast-1a --name external-prd.k8s.h3poteto.dev
-$ kops edit instancegroup master-ap-northeast-1c --name external-prd.k8s.h3poteto.dev
+$ kops edit instancegroup master-ap-northeast-1a --name external-prd-20200329.k8s.h3poteto.dev
+$ kops edit instancegroup master-ap-northeast-1c --name external-prd-20200329.k8s.h3poteto.dev
 ...
 ```
 Edit node instancegroup.
 
 
 ```bash
-$ kops edit instancegroup nodes --name external-prd.k8s.h3poteto.dev
+$ kops edit instancegroup nodes --name external-prd-20200329.k8s.h3poteto.dev
 ```
 
 ## Update cluster
@@ -37,7 +48,7 @@ Sometimes the command show some differences about iam role, please ignore it. I 
 
 ```bash
 # update master instances
-$ kops rolling-update cluster external-prd.k8s.h3poteto.dev --instance-group-roles=Master --force --yes
+$ kops rolling-update cluster external-prd-20200329.k8s.h3poteto.dev --instance-group-roles=Master --force --yes
 # update node instances
-$ kops rolling-update cluster external-prd.k8s.h3poteto.dev --instance-group-roles=Node --force --yes
+$ kops rolling-update cluster external-prd-20200329.k8s.h3poteto.dev --instance-group-roles=Node --force --yes
 ```
