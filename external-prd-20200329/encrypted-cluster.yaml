@@ -1,0 +1,97 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: "2020-03-28T15:37:11Z"
+  generation: 6
+  name: external-prd-20200329.k8s.h3poteto.dev
+spec:
+  api:
+    dns: {}
+  authentication:
+    aws: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://h3poteto-k8s-clusters/external-prd-20200329.k8s.h3poteto.dev
+  dnsZone: Z21DTFU4BHSZ51
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - instanceGroup: master-ap-northeast-1a
+      name: a
+    - instanceGroup: master-ap-northeast-1c
+      name: c
+    - instanceGroup: master-ap-northeast-1d
+      name: d
+    memoryRequest: 100Mi
+    name: main
+  - cpuRequest: 100m
+    etcdMembers:
+    - instanceGroup: master-ap-northeast-1a
+      name: a
+    - instanceGroup: master-ap-northeast-1c
+      name: c
+    - instanceGroup: master-ap-northeast-1d
+      name: d
+    memoryRequest: 100Mi
+    name: events
+  fileAssets:
+  - content: |-
+      AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAACYcwggmDBgkqhkiG9w0BBwagggl0MIIJcAIBADCCCWkGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMTt0oxnGrCbX3k4T5AgEQgIIJOiqNGWcEiESuCt++fYb0gt+LyDaJs4ao4WVqw7RkJkQyza1mhC6ghREuqzkzs69euCfvATZJY/hsk5+rXy6eungCxYDC6f+ROnqPM9HP3JB2OWRql2PMRiyxdCIqpjBURb4Y7zsebM/KrZjkWf6q/+fXe7J7EJEx7iLN/ilqfTodPuXp/tvDEvLN1C+3TsPImX9Lvd7wiAbM5ga8GHu3jCU4nfntBVutiMLl8JO4QBFwDnTpx+w9q+/IdzoUDq1sppDg73DlZJ9aakdPAS6bRn97lkQLHqnYOIGEHzkbN0vSQxxrpXkfKcNO/iDNU+YGVC7Jfm1RhBtnAuMvjDZqneKVAoHq69tvo31ezhSo2GeGdQzsefvqat8lBvYT1hd20kpjjsTqm0B0MtQG1VkmGMlKdLlIcqioaK3yJF4yV8Iz+zFkRbp4q2MkC4MzTn+I9gw1ivCkhJFnBb8BrdiOC7RDWQF33CzUR7/GudgRZBzNul040bYsN0OJbEopMYPErIH1t1Fr5x5Iz14dJh75GcON0dNDccUWX8+BV7dLqZY6ZOQyMC/kPUHFQeTyOsNx9cnwbTwjQr5DWnwRfa+r2kFo/gfkr1EVLHDcKpeEtyWvtgDBU89TTyIkibc92Q5TnVq/fi+PYgxqJGbuXUbTfjDgF41w0FNRlxeaYbJ4KgvK4UOfGXWjvDuP/qBrLdJmafhBD7QLdEblVtLON0X8g7vZEerQq9guSOxkKfJXjVIjKvvuPPXLPgURe1stw4zxniADMNeqWDmwdAsxPrAe9aHrG0cQC982znx4oI1BlLh+CFviEGI2q1Qtm+eZUHMBwcrkEwr/8c8M6i046t7pqgcfoB+uQqPaDyCrX+gbzL4c4S6ymYBR1vAWNuhOpC6UdyBoNNUSEG7w6Yq0W75R+imxPyyea0vMdwdQafLjvrZlCqcRlzzmSFd5M72qjpuMP90ZyKl4AOEtpBjUUvg0j/HO39GvaIvCQOsLZQjci8y//HtjrADspqCed1mtJ5h1/lKErO2xPaVTi9ebFyjnPorY0d1sMhNcXQJhkalgE243Mw509/7R3RwjCB3pEczlOOnVRwy54QqHdhTtICiWlrM+/S9JYXA0wWZi0nIZRvx477AO19TdDRfRhfrUljCKDeLUhQQ4eTPihA69IG81YJLU+L2xzTaD33T4FFKo+OLG1Fj2o3MpWwRuL0MQ2XHionv6klXcKlJMQJOMnLfFRgrPdrfcEFggvCkp3ziBMtOrK8ydaXr5/NVXSo7be1L+uMjVof61RFNdmphXZDxOQKNvPd2ItOlr1XC9TRveAO+YMddL3Gw8yIJEYsxl4qYYXxSmKrFVn026cux++EwI5//ZQksO5MMFiSLCRvtrDDh4Jjvt2y9vAATQfRzedFs+IqOy7rTfLA++voOACU/ODH8pZA8ZO8mb/szjCFwauvdB8Jz//QJyGmb6j4x1Xj7YqHrbJAAKzsqXOg2ZqPJGISvpAvTyL5cbXjQBwCkMLgCqMp71/QuzngrTWxSj44/d5cmRkYpdrDm7EP1f8UZ8vWNuq6NIfjzKOjUD/TtfTIBy55WRbZJfZDhML4kzgaa+BTqeoruVZqGTsU3zCFBRDHpNo1Bybcsq2pyCmjMSEqxH1z2qOwm0eurascWNyhBDG/vb69mx6l55o3cThLWZLDWkhLaucqws/PsZJtTpdQlYOnjovktX8urCA1HMNfBhtB+vkFr4jPLLHsx9f58XKzLGzS6KiZdU2Da9cHdCUVv3RYv3L+c52achEF0EmLCC8D0gPp5UsAsabdZsq0vKi0ktd2Iyiv9NybGi8wgrCL56xN3c4RIQO8p/ULf+1w8/DmJRVwN0/8AxYyHs0dhXDfsu4KkTivcgHwuXnqZIOqBdfcO93OK9phZp7gNXAIv9gSi0tHB/tTSAFSawc9stl12SUgk9LIhdgdgBU6F2CZ37UGTLrCFdT3nLgJ4lQSzLGfxecucUl6PduTfLHe7om58L3xElqfhJfDQwp3V8Ru+J2R5+hti/SsOFmHn21xjDdvl1EhvMfrFb+L6y1mU/FCk6B1+m28Rmfu7Q12aYCNzoEPSE/U5BO8u7GackYUQUVc3Da1bTYmmjVjA5reuDj+9IzyRWuHAirdjq3qIgs8UOmXhcHdnsn3TqiPxrekvzkcqYkKdIkkZlufrUlkozT76k51hResT6L0a/YSsP2rXDnRbbsdPVl12gIpu1zsN1hXCH9rHSnGpHiYaJw7iEdqhIJ5sZMhPBxucRWYOBedDUIgqWi1lyvtnVWZIHUsCRZnGgSlxvHzwfakgk0nc7y2MhqG/xzxb8Zc/brX1RPvK0+K1JbsqGXsukM2qkucVmOrDDScAXS6kzz2dBicVBiFhtr91e7V72isPmXnMk+5N6MizH/Qf1QvlNCGvd1hb+R6lQ3CVllNYH7FnVZIzttgrDcKRy1T9E+JE10vrbLljnZolwU46EySIwcciS/QPWG5DeBtk5j48M4uE+RfUTeSx/AtAErosIFNtHJ1dpcmHYumlvU7be44l/yoyg2ECr8kENJn9ceSBVrV+ZOQZBCOeHmdFatDmRBL+GYGqfQlxXcvjZaVbjTnPuO2AKlJsR5FvTmovishOe1+Pd/pPLj5oUhU3jXuzHWkZ+lEgkkFAvyhgZS0zwJUGT5G6zCtw0N+2MZ3to2ZXPZjEUkS6EjTwesPWk39A73d4JJx7voQ5zWY3n6xSvu6bc/Va4SRzL9TKzKdIixH170j4q1MFx+/JXzhCSIdJwa7w3KYB8LevIG9+K18JnUTVAFp1hxc5YuN4LFD71TnSC2ZwUuAy0YhNRZlpx7rnbCXvCB/6GSHtYAJ5qkrNLA91dns+dUkhNbAGdu1b73kB7z8Y8MMKlX17giGNYjTS5cJt4rTVY2ioeI7SgDr6znvc4gGT4izSMkdmbqdDNmc6iJs+JgtvTAHBjfy9CR0KR92jQ4wVpzWn7HjbKWtUgJPWsBRKIr0QanUvDxMlcX1mlGW12P1Q5tZJbcjbtdb6R13tk6HMXtfq7EG2jiTOnTR34bMimxwGU8/dgJ8rnDQiGoWpcT+M69mF/saB1vl/u3yjezUjoeqdGacQXDyrlg7LfoUJFtWJKUpUpEwUx0X7AtyE=
+    isBase64: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAGkwZwYJKoZIhvcNAQcGoFowWAIBADBTBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDEn+wPe3kJy2i4ZNdQIBEIAmKOfRNvsdB/zj/VY5lPvQOKMmIs6fbGPZbUezBWEJONKRqhu3OLg=
+    name: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAIQwgYEGCSqGSIb3DQEHBqB0MHICAQAwbQYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAytpko7JBCbJk1dq3QCARCAQNzjGLLWviSmGAwMIP1tSMuZ5y3aXhneGrosylfnZ516vYWkVTZH/mKXgP7ZvBMwXfJM7JuCkXRnVmX5MC85Evo=
+    path: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAJswgZgGCSqGSIb3DQEHBqCBijCBhwIBADCBgQYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAw1O0+vHFxxnYPmpMwCARCAVMO95mIEW5f/s7nzM1BDYaHRqmW4WmAWEFcDdMpk+CNUu0dQ3icET/OjbdoiDGoK6RYayzBtbQWyTs2vaWZQJHSwQU9lU61Y2RFeiVM+QP5vfj9cfA==
+  - content: |-
+      AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAuAwggLcBgkqhkiG9w0BBwagggLNMIICyQIBADCCAsIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMSo6yJpdBBkKuLPvbAgEQgIICkyZF2aitpEJ9V/vGJ1YvGekCDuv57fAHDr/giwGitZRLPjtuVFnIXh019H0T7/ST1czw7JuUBeaNpcR9H3sYjintISaz4bso9muelovgyOoX3F9PrtH5wcE4KGvuxMlNCZNAehke7Jii78J9y8WHtrTqc9l7rTKoBQdmo4JpFB+a5332GjZ6b48VS7KHWdIhVqIiVhxFIgJ5W+KhlvgIwiV6MV9WvS9Ko82cSNFG7p3SjCsMbncEN0ev7Q/+eZgvQ+s6zyZTcni8wpsNEC2Qaf0om4QZQ/MVfTspJzRiYl4rHTgt/m/RxXjWS3EcZba+mj6+dT84wNKOVx+R32w++d1LBX1ixHUBZ9PVNfi38+nT3OIgGbUxXcUMhAslN1uxhnItEDo+zhBQqvJ0fcPrKO2+7zgQSCBi7qoZeH/J5Ap4Sezcs1xrYmKbuwxiFZw2hMNsPHWgcvoQgCzzcnCBXlCNCFo+cjvj5C17bJLuCebwPk8HvLv6VwW0yEKbfDTCdNG6WlZT2w+lAotLO5ZynV3mqIIdDNMKIDz1wWf7lDDP85UQOPuVcGAshN1EkE/Toalc2iJlbysHWhk5T1jNm4H6ovjoIf2UX7yzNtYTR1zqq9PHAhzxfZ5wALua6HTdN4NsDmAXFpPYUuipXsgd+uGwEbwXrB/qUBpY7Ys+/yvewkB4BpTr9fi43H2YjoQSI/wL9ZDvKREuvafN/I37OyU7pUkWJINVBNBlkVIE71Iv6JY1kBjFhJ5ZaqU8I1PL761mX979FUdO1YBlIIvah7cCiq4Q5fNF/sHXqZyEQAaoBkE2BigznS9H8Hctzgdd7W648jUY7taknPY6yF019u1O/9JH8Ofrj2RP51YrrJcwl10B
+    isBase64: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAGkwZwYJKoZIhvcNAQcGoFowWAIBADBTBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOQeHxe/GuIAoAHvbAIBEIAmWGnB5Y9rOV+Lnlpr8JGlwYtXFGovaZI38R0qLNG+6cGUZwxAYAA=
+    name: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAHsweQYJKoZIhvcNAQcGoGwwagIBADBlBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMHqpSOliCKxvrF+YgIBEIA4XsW4xdNQCLLNqX1ckCPlTq7zx1s1RN1RXj/Fce4uEEVncu76xUGasB/CED1aDzhV+q/VnUNvLZk=
+    path: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAJEwgY4GCSqGSIb3DQEHBqCBgDB+AgEAMHkGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMxP1ZXLxwEhakWG74AgEQgEyLsGv7YDhdiQmYswENWcpAcNXpbzOVWrPm7LzfPM+l36fcv3qGPf6AMzs3RjlSn1gLkYr94m9i8pyeo3CUfUuRdS/JajknbsPuZLTH
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubeAPIServer:
+    apiAudiences:
+    - AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAKEwgZ4GCSqGSIb3DQEHBqCBkDCBjQIBADCBhwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAwFmbP4Z43SktJT80ECARCAWo9ANDZ2ftjajWL47IqmA+pa0X6mufxHEqujc1u05+CGPJG0LF/ALwM8HGfE/dXJKySw4P4bkJC+Mf7IVHhDkWFid9Yt7QCGEcibcfYMdqd8OnsBBHyPjKe9ww==
+    serviceAccountIssuer: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAKkwgaYGCSqGSIb3DQEHBqCBmDCBlQIBADCBjwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAytKWxYZxPSkky08N0CARCAYqiR8Be91cy9nV0nER5RaXWWAhz8xY7QleE+iXyappU4t73OiZDQT50fwk+HVB9KMexAXsoz4TWkNm1U+8DPZb+373y0tyrGa1jAtPusfMptYm694JtF9aOLrS/cjQKo5pqc
+    serviceAccountKeyFile:
+    - /srv/kubernetes/server.key
+    - /srv/kubernetes/assets/service-account-key
+    serviceAccountSigningKeyFile: /srv/kubernetes/assets/service-account-signing-key
+  kubelet:
+    anonymousAuth: false
+    authenticationTokenWebhook: true
+    authorizationMode: Webhook
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.16.7
+  masterInternalName: api.internal.external-prd-20200329.k8s.h3poteto.dev
+  masterPublicName: api.external-prd-20200329.k8s.h3poteto.dev
+  networkCIDR: 10.0.0.0/16
+  networkID: vpc-fb354b9c
+  networking:
+    amazonvpc: {}
+  nonMasqueradeCIDR: 10.0.0.0/16
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 10.0.0.0/20
+    id: subnet-fa7f7fb3
+    name: ap-northeast-1a
+    type: Public
+    zone: ap-northeast-1a
+  - cidr: 10.0.16.0/20
+    id: subnet-70bbc92b
+    name: ap-northeast-1c
+    type: Public
+    zone: ap-northeast-1c
+  - cidr: 10.0.32.0/20
+    id: subnet-f45541dc
+    name: ap-northeast-1d
+    type: Public
+    zone: ap-northeast-1d
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public
