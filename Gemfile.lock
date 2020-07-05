@@ -39,6 +39,3 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-kms
   yaml_vault (~> 1.1.2)
-
-BUNDLED WITH
-   1.17.2
