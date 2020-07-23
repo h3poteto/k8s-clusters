@@ -2,14 +2,14 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   creationTimestamp: "2020-03-28T15:37:11Z"
-  generation: 1
+  generation: 2
   labels:
     kops.k8s.io/cluster: external-prd-20200329.k8s.h3poteto.dev
   name: master-ap-northeast-1a
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -29,14 +29,14 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   creationTimestamp: "2020-03-28T15:37:11Z"
-  generation: 1
+  generation: 2
   labels:
     kops.k8s.io/cluster: external-prd-20200329.k8s.h3poteto.dev
   name: master-ap-northeast-1c
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -56,14 +56,14 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   creationTimestamp: "2020-03-28T15:37:11Z"
-  generation: 1
+  generation: 2
   labels:
     kops.k8s.io/cluster: external-prd-20200329.k8s.h3poteto.dev
   name: master-ap-northeast-1d
 spec:
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: t3.small
   maxPrice: "0.025"
   maxSize: 1
@@ -83,7 +83,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   creationTimestamp: "2020-03-28T15:37:11Z"
-  generation: 3
+  generation: 4
   labels:
     kops.k8s.io/cluster: external-prd-20200329.k8s.h3poteto.dev
   name: nodes
@@ -92,7 +92,7 @@ spec:
     datadog: enabled
   iam:
     profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
-  image: kope.io/k8s-1.16-debian-stretch-amd64-hvm-ebs-2020-01-17
+  image: kope.io/k8s-1.17-debian-stretch-amd64-hvm-ebs-2020-07-20
   machineType: t3.medium
   maxPrice: "0.05"
   maxSize: 5
