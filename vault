@@ -9,7 +9,7 @@ function dec {
 }
 
 if [ $# -ne 4 ]; then
-    echo "vault (encrypt|decrypt) input_file output_file keys"
+    echo "vault (encrypt|decrypt) input_file output_file key"
     exit 1
 fi
 
@@ -21,7 +21,7 @@ case "$1" in
         dec $2 $3 $4
         ;;
     *)
-        echo "vault (encrypt|decrypt) input_file output_file keys"
+        echo "vault (encrypt|decrypt) input_file output_file key"
         exit 1
         ;;
 esac
