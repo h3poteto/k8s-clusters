@@ -1,0 +1,372 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: external-prd-20210528.k8s.h3poteto.dev
+spec:
+  api:
+    dns: {}
+  authentication:
+    aws: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://h3poteto-k8s-clusters/external-prd-20210528.k8s.h3poteto.dev
+  dnsZone: Z21DTFU4BHSZ51
+  containerRuntime: containerd
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1a-1
+      name: a1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1c-1
+      name: c1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1d-1
+      name: d1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1a-2
+      name: a2
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1c-2
+      name: c2
+    memoryRequest: 100Mi
+    name: main
+  - cpuRequest: 100m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1a-1
+      name: a1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1c-1
+      name: c1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1d-1
+      name: d1
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1a-2
+      name: a2
+    - encryptedVolume: true
+      instanceGroup: master-ap-northeast-1c-2
+      name: c2
+    memoryRequest: 100Mi
+    name: events
+  fileAssets:
+  - content: |-
+      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
+    isBase64: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAGkwZwYJKoZIhvcNAQcGoFowWAIBADBTBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMDmUWtKRx41CrLUgAIBEIAm/MYXZ/5Pxlwvzg5bLTGULJcY4sOAP4axdRK/ovGqxTpamDgTSAM=
+    name: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAIQwgYEGCSqGSIb3DQEHBqB0MHICAQAwbQYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAxPjpEM/kZcv9ouuZgCARCAQE9Q2oMXc+YFreZeigzNJtNnGRwpn+CUNFXh9maj6XgYfICXstAzopVNBLS6nY38yyqjn2uJGwAqtq4JIjFkbwY=
+    path: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAJswgZgGCSqGSIb3DQEHBqCBijCBhwIBADCBgQYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAycxgw8P0Xem8vwomMCARCAVIPt/Qek7yGRFm7zz0As/tc7lG0gvgAYNhRIOzdB4IoqnZC5fKbBSy70/90ctduMPW4wwbgvKO3HDllndjmBter588N58hHHQPR7/9CjVrdzGmPa8A==
+  - content: |-
+      AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAuAwggLcBgkqhkiG9w0BBwagggLNMIICyQIBADCCAsIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMfsyrR0OTppU2vNv5AgEQgIICkwlLKskqcRvSNPBEoblj/qWK3vUFeSYXSZEugx0N7TYqULKXp/cfuaNNGhMxU3nDZ5jl3WWh+HqeTfm8hZNWWIlqPzGQ3h/O8pPqSoZzn39fOU9D9xkHOBM4K2j3hidiR7HfI45D2/iRqfdRHvXQYgGfBL8UluFlkMzv0cZVMo9++g811I2Qa6g4ryvjacexjzVcApxDuffLM8cJNJzyRKlKFacUjsTD8IkJ5eUwuiT/QHgNUD+wKL4JR5k5WuASs0pg/NKJPtg2KPtHxkXKVEUVlowNOHLYrhUMfI4bnqgrmJuaUJYXARqCePFE9Ota9kvF1RSe/t86RMLTrBe8XWg7/LzhzS2sf9pdOyw6wzlLlEmqhNXSMzlxletnY1v8os8LMNPD/4w7RwC7HN3dw6cCwu27GVad1AuhcBJfcQS+5HzQ6vgMFsNSbuK66s4vEf13GTRpLLiJO/oWNykiV2QCOEbctAhwbiykbY4M7hAzoYTtPf4SzVO/2CWlNMkHLgWnzjkNqliXgFuD75PPKoS1HcHLkCLdWzkZMngbAjgo9REW6Z+7QUny5VOHqgMwAJnW/3gb/ulA7iV3sOFLbhobqfiOlMhjgfFLnqpq3I4jSpP9TpMDC0zrXfD44QrnQ+jDuj+h34on5ZeY3/sbpMZofo9echK4yoGwCsY+Z2PpiXzVnPRAVLPqG89TJyndtizWG+VjGJexmlOO5kWGoC1v/IcLWSp6TmaiPaOO6KG8itk/kwRcZ9TkS7mKL97wuIqwEieEtMvMizx/0xb2aO1SlcVgpRNIt24Xblf4kVPMy/Pcflv63fnlqtFfvi1JBlI2ZSqDJXJXuZVA/3t/kMx3ShIv7+5QU6gfDznWv2RC6yrC
+    isBase64: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAGkwZwYJKoZIhvcNAQcGoFowWAIBADBTBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDIrEcK/B9Cm3kkuy2QIBEIAm5pF9+35GR1MJA3hQef8uOtqynPuoGZ2MMNYEnraWR8eBMGJHLss=
+    name: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAHsweQYJKoZIhvcNAQcGoGwwagIBADBlBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOs/oRuKeJU57iFnmgIBEIA49om5OIPCSx3B6AWapn6vCx2tGjXeVLK8Qhjlj+dPf95cE4ZyfH/+7Cnmqd10KO/9kWsCXNBoAYA=
+    path: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAJEwgY4GCSqGSIb3DQEHBqCBgDB+AgEAMHkGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMAHCTqLeuY0rJsTaqAgEQgEz2qwNDb4GHqFlDQn6i6SacouCHF8NHkWqh7oSwT4p7Zph/LCvwseqTiKt0lo6C8stEPl7dVh8DXYr1+2+Hd9AqMEVK73EyeXzQSyFR
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubelet:
+    anonymousAuth: false
+    authenticationTokenWebhook: true
+    authorizationMode: Webhook
+  kubeAPIServer:
+    defaultNotReadyTolerationSeconds: 600
+    defaultUnreachableTolerationSeconds: 600
+    apiAudiences:
+    - AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAKEwgZ4GCSqGSIb3DQEHBqCBkDCBjQIBADCBhwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAyclQky6M4ThCplHsUCARCAWtgAbm0sA1Q1dEPCw7Wq4cCUgRv8v0Fibc3a3lD9dOCMazG8XWRCJiNTf1g6318UcGGNrwgoSiy3TQZ1B5IoGw2CuVZqHpi6hJJ6xm/y78WKXCiAL6aTzxaa2g==
+    serviceAccountIssuer: AQECAHhRyjfcAU0BFeAevHu12PEb8p++xXO5Ct1XvR/ARXpyaQAAAKkwgaYGCSqGSIb3DQEHBqCBmDCBlQIBADCBjwYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAz02SOg+yonMDQtWiYCARCAYkvZOGUsB94FonRCGZL+zWMWk+jGs0baNdT7UpbsIiKfY/fwe7eJmTP0ribLkzehQyXuUx08C0fqe8eqBR8DVTJaVLJC/2Lxx1CS8He77vooWtvrT/wdbvDDqmsM6aLvtiJN
+    serviceAccountKeyFile:
+    - /srv/kubernetes/server.key
+    - /srv/kubernetes/assets/service-account-key
+    serviceAccountSigningKeyFile: /srv/kubernetes/assets/service-account-signing-key
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.20.6
+  masterPublicName: api.external-prd-20210528.k8s.h3poteto.dev
+  networkCIDR: 10.0.0.0/16
+  networkID: vpc-fb354b9c
+  networking:
+    amazonvpc: {}
+  nonMasqueradeCIDR: 10.0.0.0/16
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 10.0.0.0/20
+    id: subnet-fa7f7fb3
+    name: ap-northeast-1a
+    type: Public
+    zone: ap-northeast-1a
+  - cidr: 10.0.16.0/20
+    id: subnet-70bbc92b
+    name: ap-northeast-1c
+    type: Public
+    zone: ap-northeast-1c
+  - cidr: 10.0.32.0/20
+    id: subnet-f45541dc
+    name: ap-northeast-1d
+    type: Public
+    zone: ap-northeast-1d
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: master-ap-northeast-1a-1
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  maxPrice: "0.025"
+  mixedInstancesPolicy:
+    instances:
+    - t3.small
+    - t2.small
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1a
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1a
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: master-ap-northeast-1c-1
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  maxPrice: "0.025"
+  mixedInstancesPolicy:
+    instances:
+    - t3.small
+    - t2.small
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1c
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1c
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: master-ap-northeast-1d-1
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  maxPrice: "0.025"
+  mixedInstancesPolicy:
+    instances:
+    - t3.small
+    - t2.small
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1d
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1d
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: master-ap-northeast-1a-2
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.small
+  maxSize: 1
+  minSize: 0
+  maxPrice: "0.025"
+  mixedInstancesPolicy:
+    instances:
+    - t3.small
+    - t2.small
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1a
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1a
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: master-ap-northeast-1c-2
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-master-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.small
+  maxSize: 1
+  minSize: 0
+  maxPrice: "0.025"
+  mixedInstancesPolicy:
+    instances:
+    - t3.small
+    - t2.small
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-ap-northeast-1c
+  role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-0110c581f1db6223d
+  subnets:
+  - ap-northeast-1c
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1a
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.medium
+  maxSize: 2
+  minSize: 1
+  maxPrice: "0.05"
+  mixedInstancesPolicy:
+    instances:
+    - t3.medium
+    - t2.medium
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-ap-northeast-1a
+  role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-02c91c8f054c85937
+  subnets:
+  - ap-northeast-1a
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1c
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.medium
+  maxSize: 2
+  minSize: 1
+  maxPrice: "0.05"
+  mixedInstancesPolicy:
+    instances:
+    - t3.medium
+    - t2.medium
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-ap-northeast-1c
+  role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-02c91c8f054c85937
+  subnets:
+  - ap-northeast-1c
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: external-prd-20210528.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1d
+spec:
+  iam:
+    profile: arn:aws:iam::564677439943:instance-profile/k8s-node-profile
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
+  machineType: t3.medium
+  maxSize: 2
+  minSize: 1
+  maxPrice: "0.05"
+  mixedInstancesPolicy:
+    instances:
+    - t3.medium
+    - t2.medium
+    onDemandAboveBase: 0
+    onDemandBase: 0
+    spotAllocationStrategy: lowest-price
+    spotInstancePools: 2
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes-ap-northeast-1d
+  role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp3
+  securityGroupOverride: sg-02c91c8f054c85937
+  subnets:
+  - ap-northeast-1d
