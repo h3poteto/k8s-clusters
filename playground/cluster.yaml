@@ -5,7 +5,14 @@ metadata:
   name: playground.k8s.h3poteto.dev
 spec:
   api:
-    dns: {}
+    loadBalancer:
+      class: Network
+      # class: Classic
+      type: Public
+      accessLog:
+        interval: 5
+        bucket: h3poteto-playground-access-logs
+    # dns: {}
   authorization:
     rbac: {}
   channel: stable
@@ -17,39 +24,27 @@ spec:
   - cpuRequest: 200m
     etcdMembers:
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1a-1
-      name: a1
+      instanceGroup: master-ap-northeast-1a
+      name: a
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1c-1
-      name: c1
+      instanceGroup: master-ap-northeast-1c
+      name: c
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1d-1
-      name: d1
-    - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1a-2
-      name: a2
-    - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1c-2
-      name: c2
+      instanceGroup: master-ap-northeast-1d
+      name: d
     memoryRequest: 100Mi
     name: main
   - cpuRequest: 100m
     etcdMembers:
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1a-1
-      name: a1
+      instanceGroup: master-ap-northeast-1a
+      name: a
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1c-1
-      name: c1
+      instanceGroup: master-ap-northeast-1c
+      name: c
     - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1d-1
-      name: d1
-    - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1a-2
-      name: a2
-    - encryptedVolume: true
-      instanceGroup: master-ap-northeast-1c-2
-      name: c2
+      instanceGroup: master-ap-northeast-1d
+      name: d
     memoryRequest: 100Mi
     name: events
   iam:
@@ -99,7 +94,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: playground.k8s.h3poteto.dev
-  name: master-ap-northeast-1a-1
+  name: master-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
   machineType: t3.small
@@ -128,7 +123,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: playground.k8s.h3poteto.dev
-  name: master-ap-northeast-1c-1
+  name: master-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
   machineType: t3.small
@@ -157,7 +152,7 @@ metadata:
   creationTimestamp: null
   labels:
     kops.k8s.io/cluster: playground.k8s.h3poteto.dev
-  name: master-ap-northeast-1d-1
+  name: master-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
   machineType: t3.small
@@ -177,64 +172,6 @@ spec:
   role: Master
   subnets:
   - ap-northeast-1d
-
----
-
-apiVersion: kops.k8s.io/v1alpha2
-kind: InstanceGroup
-metadata:
-  creationTimestamp: null
-  labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
-  name: master-ap-northeast-1a-2
-spec:
-  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
-  machineType: t3.small
-  maxSize: 1
-  minSize: 1
-  maxPrice: "0.208"
-  mixedInstancesPolicy:
-    instances:
-      - t3.small
-      - t2.small
-    onDemandAboveBase: 0
-    onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
-  nodeLabels:
-    kops.k8s.io/instancegroup: master-ap-northeast-1a
-  role: Master
-  subnets:
-  - ap-northeast-1a
-
----
-
-apiVersion: kops.k8s.io/v1alpha2
-kind: InstanceGroup
-metadata:
-  creationTimestamp: null
-  labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
-  name: master-ap-northeast-1c-2
-spec:
-  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20210415
-  machineType: t3.small
-  maxSize: 1
-  minSize: 1
-  maxPrice: "0.208"
-  mixedInstancesPolicy:
-    instances:
-      - t3.small
-      - t2.small
-    onDemandAboveBase: 0
-    onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
-  nodeLabels:
-    kops.k8s.io/instancegroup: master-ap-northeast-1c
-  role: Master
-  subnets:
-  - ap-northeast-1c
 
 ---
 
