@@ -58,15 +58,20 @@ spec:
     defaultUnreachableTolerationSeconds: 600
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.22.4
+  kubernetesVersion: 1.22.5
   masterPublicName: api.playground.k8s.h3poteto.dev
   networkCIDR: 172.20.0.0/16
   networking:
     amazonvpc: {}
   nonMasqueradeCIDR: 100.64.0.0/10
   serviceAccountIssuerDiscovery:
-    discoveryStore: s3://publicly-readable-store
+    discoveryStore: s3://h3poteto-irsa-discovery-store
     enableAWSOIDCProvider: true
+  podIdentityWebhook:
+    enabled: true
+  certManager:
+    enabled: true
+    managed: true
   sshAccess:
   - 0.0.0.0/0
   - ::/0
@@ -199,14 +204,14 @@ spec:
   instanceMetadata:
     httpPutResponseHopLimit: 3
     httpTokens: required
-  machineType: t3.medium
-  maxSize: 1
+  machineType: t3.small
+  maxSize: 2
   minSize: 1
   maxPrice: "0.416"
   mixedInstancesPolicy:
     instances:
-      - t3.medium
-      - t2.medium
+      - t3.small
+      - t2.small
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
@@ -231,14 +236,14 @@ spec:
   instanceMetadata:
     httpPutResponseHopLimit: 3
     httpTokens: required
-  machineType: t3.medium
-  maxSize: 1
+  machineType: t3.small
+  maxSize: 2
   minSize: 1
   maxPrice: "0.416"
   mixedInstancesPolicy:
     instances:
-      - t3.medium
-      - t2.medium
+      - t3.small
+      - t2.small
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
@@ -263,14 +268,14 @@ spec:
   instanceMetadata:
     httpPutResponseHopLimit: 3
     httpTokens: required
-  machineType: t3.medium
-  maxSize: 1
+  machineType: t3.small
+  maxSize: 2
   minSize: 1
   maxPrice: "0.416"
   mixedInstancesPolicy:
     instances:
-      - t3.medium
-      - t2.medium
+      - t3.small
+      - t2.small
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
