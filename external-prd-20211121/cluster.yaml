@@ -49,6 +49,7 @@ spec:
     anonymousAuth: false
     authenticationTokenWebhook: true
     authorizationMode: Webhook
+    maxPods: 20
   kubeAPIServer:
     defaultNotReadyTolerationSeconds: 600
     defaultUnreachableTolerationSeconds: 600
