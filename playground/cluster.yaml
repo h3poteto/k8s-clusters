@@ -12,6 +12,8 @@ spec:
     #     interval: 5
     #     bucket: h3poteto-playground-access-logs
     dns: {}
+  authentication:
+    aws: {}
   authorization:
     rbac: {}
   channel: stable
@@ -49,16 +51,30 @@ spec:
   iam:
     allowContainerRegistry: true
     legacy: false
+    # serviceAccountExternalPermissions:
+    #   - name: my-sa
+    #     namespace: my-ns
+    #     aws:
+    #       inlinePolicy: |-
+    #         [
+    #           {
+    #             "Effect": "Allow",
+    #             "Action": "ec2:Describe*",
+    #             "Resource": "*"
+    #           }
+    #         ]
+
   kubelet:
     anonymousAuth: false
     authenticationTokenWebhook: true
     authorizationMode: Webhook
+    maxPods: 50
   kubeAPIServer:
     defaultNotReadyTolerationSeconds: 600
     defaultUnreachableTolerationSeconds: 600
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.22.5
+  kubernetesVersion: 1.25.10
   masterPublicName: api.playground.k8s.h3poteto.dev
   networkCIDR: 172.20.0.0/16
   networking:

@@ -10,11 +10,14 @@ spec:
     aws: {}
   authorization:
     rbac: {}
+  certManager:
+    enabled: true
+    managed: true
   channel: stable
   cloudProvider: aws
   configBase: s3://h3poteto-k8s-clusters/external-prd-20220509.k8s.h3poteto.dev
-  dnsZone: Z21DTFU4BHSZ51
   containerRuntime: containerd
+  dnsZone: Z21DTFU4BHSZ51
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
@@ -45,31 +48,31 @@ spec:
   iam:
     allowContainerRegistry: true
     legacy: false
+  kubeAPIServer:
+    defaultNotReadyTolerationSeconds: 600
+    defaultUnreachableTolerationSeconds: 600
   kubelet:
     anonymousAuth: false
     authenticationTokenWebhook: true
     authorizationMode: Webhook
     maxPods: 20
-  kubeAPIServer:
-    defaultNotReadyTolerationSeconds: 600
-    defaultUnreachableTolerationSeconds: 600
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.24.4
+  kubernetesVersion: 1.25.10
+  masterInternalName: api.internal.external-prd-20220509.k8s.h3poteto.dev
   masterPublicName: api.external-prd-20220509.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
   networking:
     amazonvpc: {}
   nonMasqueradeCIDR: 10.0.0.0/16
-  serviceAccountIssuerDiscovery:
-    discoveryStore: s3://oidc-692d626d-3e5a-3957-b705-064b2986f1fd
-    enableAWSOIDCProvider: true
   podIdentityWebhook:
     enabled: true
-  certManager:
-    enabled: true
-    managed: true
+  serviceAccountIssuerDiscovery:
+    additionalAudiences:
+    - sts.amazonaws.com
+    discoveryStore: s3://oidc-692d626d-3e5a-3957-b705-064b2986f1fd
+    enableAWSOIDCProvider: true
   sshAccess:
   - 0.0.0.0/0
   - ::/0
@@ -113,7 +116,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
@@ -150,7 +153,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
@@ -187,7 +190,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
