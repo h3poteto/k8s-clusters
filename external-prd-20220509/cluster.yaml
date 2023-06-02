@@ -58,7 +58,7 @@ spec:
     maxPods: 20
   kubernetesApiAccess:
   - 0.0.0.0/0
-  kubernetesVersion: 1.24.4
+  kubernetesVersion: 1.25.10
   masterInternalName: api.internal.external-prd-20220509.k8s.h3poteto.dev
   masterPublicName: api.external-prd-20220509.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
@@ -116,7 +116,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
@@ -153,7 +153,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
@@ -190,7 +190,7 @@ spec:
     httpTokens: required
   machineType: t3.small
   maxPrice: "0.025"
-  maxSize: 2
+  maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
