@@ -2,7 +2,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: null
-  name: external-prd-20230614.k8s.h3poteto.dev
+  name: external-prd-20230615.k8s.h3poteto.dev
 spec:
   api:
     dns: {}
@@ -15,7 +15,7 @@ spec:
     managed: true
   channel: stable
   cloudProvider: aws
-  configBase: s3://h3poteto-k8s-clusters/external-prd-20230614.k8s.h3poteto.dev
+  configBase: s3://h3poteto-k8s-clusters/external-prd-20230615.k8s.h3poteto.dev
   containerRuntime: containerd
   dnsZone: Z21DTFU4BHSZ51
   etcdClusters:
@@ -48,8 +48,6 @@ spec:
   iam:
     allowContainerRegistry: true
     legacy: false
-  kubeProxy:
-    enabled: false
   kubelet:
     anonymousAuth: false
     authenticationTokenWebhook: true
@@ -59,20 +57,18 @@ spec:
   - 0.0.0.0/0
   - ::/0
   kubernetesVersion: 1.26.5
-  masterPublicName: api.external-prd-20230614.k8s.h3poteto.dev
+  masterPublicName: api.external-prd-20230615.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
   networking:
-    cilium:
-      ipam: eni
-      enableNodePort: true
+    amazonvpc: {}
   nonMasqueradeCIDR: 10.0.0.0/16
   podIdentityWebhook:
     enabled: true
   serviceAccountIssuerDiscovery:
     additionalAudiences:
     - sts.amazonaws.com
-    discoveryStore: s3://oidc-4e06b83b-d8b7-03bb-ad0b-f2f54df66c74
+    discoveryStore: s3://oidc-5765ab14-c09a-01e5-ab13-de384a3d3bd3
     enableAWSOIDCProvider: true
   sshAccess:
   - 0.0.0.0/0
@@ -106,7 +102,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1a
 spec:
   iam:
@@ -141,7 +137,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1c
 spec:
   iam:
@@ -176,7 +172,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1d
 spec:
   iam:
@@ -211,7 +207,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: nodes-ap-northeast-1a
 spec:
   iam:
@@ -246,7 +242,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: nodes-ap-northeast-1c
 spec:
   iam:
@@ -281,7 +277,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: nodes-ap-northeast-1d
 spec:
   iam:
@@ -316,7 +312,7 @@ kind: SSHCredential
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-prd-20230614.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-prd-20230615.k8s.h3poteto.dev
   name: admin
 spec:
   publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7cv/fReAmPT46/r2DB+zDUSeqLt0Z+473/yDeRK0bgPdsgqhg/ZLQ+3/OKUvTBhcfsuy3Hjhx7tm/TjGGeMcdk+eC4EGu6br6TXEEfucu4cwsJ8rPkiJCaIMNHlzCsgpC8Mx0ICNEvunNnNZf7r6epF3Ph0E9KQ1eEBuRxytIDylNM0wJ4xnvXCrEIIsXHk74ktQCZgSa6SXr2j2tG0YxepljNpScSufHHE/yfQ4VTyjB/7kBW8LpWmh7GFAb1zk3GN0Q4k7/jrfIwH4fDHiLnOImk2FmjLizTOurdNykX9gCYgaifJSWeW3sNccWb6dBuc+OX8xmzIEMC0HWS68z
