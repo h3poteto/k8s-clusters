@@ -112,13 +112,14 @@ spec:
     httpPutResponseHopLimit: 3
     httpTokens: required
   machineType: t3.small
-  maxPrice: "0.025"
+  maxPrice: "0.03"
   maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
@@ -147,13 +148,14 @@ spec:
     httpPutResponseHopLimit: 3
     httpTokens: required
   machineType: t3.small
-  maxPrice: "0.025"
+  maxPrice: "0.03"
   maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
@@ -182,13 +184,14 @@ spec:
     httpPutResponseHopLimit: 3
     httpTokens: required
   machineType: t3.small
-  maxPrice: "0.025"
+  maxPrice: "0.03"
   maxSize: 1
   minSize: 1
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: lowest-price
