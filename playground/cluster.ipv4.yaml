@@ -1,0 +1,220 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: playground.k8s.h3poteto.dev
+spec:
+  api:
+    dns: {}
+  authentication:
+    aws: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://h3poteto-k8s-playground/playground.k8s.h3poteto.dev
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1c
+      name: c
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1d
+      name: d
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: main
+  - cpuRequest: 100m
+    etcdMembers:
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1a
+      name: a
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1c
+      name: c
+    - encryptedVolume: true
+      instanceGroup: control-plane-ap-northeast-1d
+      name: d
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubelet:
+    anonymousAuth: false
+    authenticationTokenWebhook: true
+    authorizationMode: Webhook
+    maxPods: 50
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  - ::/0
+  kubernetesVersion: 1.27.4
+  masterPublicName: api.playground.k8s.h3poteto.dev
+  networkCIDR: 172.16.0.0/16
+  networkID: vpc-00ea717e1640613ea
+  networking:
+    cilium:
+      ipam: eni
+  nonMasqueradeCIDR: 100.64.0.0/10
+  serviceAccountIssuerDiscovery:
+    discoveryStore: s3://h3poteto-irsa-discovery-store
+    enableAWSOIDCProvider: true
+  podIdentityWebhook:
+    enabled: true
+  certManager:
+    enabled: true
+    managed: true
+  sshAccess: []
+  subnets:
+  - id: subnet-0619c5276e1edce32
+    cidr: 172.16.0.0/20
+    name: ap-northeast-1a
+    type: Public
+    zone: ap-northeast-1a
+  - id: subnet-04acc221370b74258
+    cidr: 172.16.16.0/20
+    name: ap-northeast-1c
+    type: Public
+    zone: ap-northeast-1c
+  - id: subnet-06d07ea961e7e0007
+    cidr: 172.16.32.0/20
+    name: ap-northeast-1d
+    type: Public
+    zone: ap-northeast-1d
+  topology:
+    dns:
+      type: Public
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: control-plane-ap-northeast-1a
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - ap-northeast-1a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: control-plane-ap-northeast-1c
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - ap-northeast-1c
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: control-plane-ap-northeast-1d
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  subnets:
+  - ap-northeast-1d
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1a
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - ap-northeast-1a
+  taints:
+  - node.cilium.io/agent-not-ready=true:NoExecute
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1c
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - ap-northeast-1c
+  taints:
+  - node.cilium.io/agent-not-ready=true:NoExecute
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: nodes-ap-northeast-1d
+spec:
+  image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230711
+  machineType: t3.medium
+  maxSize: 1
+  minSize: 1
+  role: Node
+  subnets:
+  - ap-northeast-1d
+  taints:
+  - node.cilium.io/agent-not-ready=true:NoExecute
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: SSHCredential
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+  name: admin
+spec:
+  publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7cv/fReAmPT46/r2DB+zDUSeqLt0Z+473/yDeRK0bgPdsgqhg/ZLQ+3/OKUvTBhcfsuy3Hjhx7tm/TjGGeMcdk+eC4EGu6br6TXEEfucu4cwsJ8rPkiJCaIMNHlzCsgpC8Mx0ICNEvunNnNZf7r6epF3Ph0E9KQ1eEBuRxytIDylNM0wJ4xnvXCrEIIsXHk74ktQCZgSa6SXr2j2tG0YxepljNpScSufHHE/yfQ4VTyjB/7kBW8LpWmh7GFAb1zk3GN0Q4k7/jrfIwH4fDHiLnOImk2FmjLizTOurdNykX9gCYgaifJSWeW3sNccWb6dBuc+OX8xmzIEMC0HWS68z
+    akira@hakone
