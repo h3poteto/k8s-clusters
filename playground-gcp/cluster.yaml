@@ -1,0 +1,198 @@
+apiVersion: kops.k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: null
+  name: playground.gcp.h3poteto.dev
+spec:
+  api:
+    dns: {}
+  authorization:
+    rbac: {}
+  channel: stable
+  cloudConfig: {}
+  cloudProvider: gce
+  configBase: gs://h3poteto-playground-k8s/playground.gcp.h3poteto.dev
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - instanceGroup: control-plane-asia-northeast1-a
+      name: a
+    - instanceGroup: control-plane-asia-northeast1-b
+      name: b
+    - instanceGroup: control-plane-asia-northeast1-c
+      name: c
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: main
+  - cpuRequest: 100m
+    etcdMembers:
+    - instanceGroup: control-plane-asia-northeast1-a
+      name: a
+    - instanceGroup: control-plane-asia-northeast1-b
+      name: b
+    - instanceGroup: control-plane-asia-northeast1-c
+      name: c
+    manager:
+      backupRetentionDays: 90
+    memoryRequest: 100Mi
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubeProxy:
+    enabled: true
+  kubelet:
+    anonymousAuth: false
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  - ::/0
+  kubernetesVersion: 1.27.4
+  masterPublicName: api.playground.gcp.h3poteto.dev
+  networking:
+    cilium: {}
+  nonMasqueradeCIDR: 100.64.0.0/10
+  project: development-394615
+  sshAccess:
+  - 0.0.0.0/0
+  - ::/0
+  subnets:
+  - cidr: 10.0.16.0/20
+    name: asia-northeast1
+    region: asia-northeast1
+    type: Public
+  topology:
+    dns:
+      type: Public
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: control-plane-asia-northeast1-a
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: control-plane-asia-northeast1-b
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: control-plane-asia-northeast1-c
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-small
+  maxSize: 1
+  minSize: 1
+  role: Master
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-c
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: nodes-asia-northeast1-a
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    cloud.google.com/metadata-proxy-ready: "true"
+  role: Node
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-a
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: nodes-asia-northeast1-b
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    cloud.google.com/metadata-proxy-ready: "true"
+  role: Node
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-b
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: null
+  labels:
+    kops.k8s.io/cluster: playground.gcp.h3poteto.dev
+  name: nodes-asia-northeast1-c
+spec:
+  image: ubuntu-os-cloud/ubuntu-2204-jammy-v20230714
+  machineType: e2-medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    cloud.google.com/metadata-proxy-ready: "true"
+  role: Node
+  gcpProvisioningModel: SPOT
+  subnets:
+  - asia-northeast1
+  zones:
+  - asia-northeast1-c
