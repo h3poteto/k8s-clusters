@@ -52,16 +52,19 @@ spec:
     authenticationTokenWebhook: true
     authorizationMode: Webhook
     maxPods: 50
+  kubeProxy:
+    enabled: false
   kubernetesApiAccess:
   - 0.0.0.0/0
   - ::/0
-  kubernetesVersion: 1.27.4
+  kubernetesVersion: 1.28.7
   masterPublicName: api.playground.k8s.h3poteto.dev
   networkCIDR: 172.16.0.0/16
   networkID: vpc-00ea717e1640613ea
   networking:
     cilium:
       ipam: eni
+      enableNodePort: true
   nonMasqueradeCIDR: 100.64.0.0/10
   serviceAccountIssuerDiscovery:
     discoveryStore: s3://h3poteto-irsa-discovery-store
@@ -71,7 +74,9 @@ spec:
   certManager:
     enabled: true
     managed: true
-  sshAccess: []
+  sshAccess:
+  - 0.0.0.0/0
+  - ::/0
   subnets:
   - id: subnet-0619c5276e1edce32
     cidr: 172.16.0.0/20
