@@ -123,8 +123,8 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
+  capacityRebalance: false
   role: Master
   rootVolumeSize: 20
   rootVolumeType: gp2
@@ -156,8 +156,8 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
+  capacityRebalance: false
   role: Master
   rootVolumeSize: 20
   rootVolumeType: gp2
@@ -189,8 +189,8 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
+  capacityRebalance: false
   role: Master
   rootVolumeSize: 20
   rootVolumeType: gp2
@@ -221,8 +221,7 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp2
@@ -253,8 +252,7 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp2
@@ -285,8 +283,7 @@ spec:
     - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: capacity-optimized
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp2
