@@ -8,6 +8,9 @@ spec:
     dns: {}
   authorization:
     rbac: {}
+  authentication:
+    aws:
+      image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-iam-authenticator:v0.5.21
   channel: stable
   cloudProvider: aws
   configBase: s3://h3poteto-k8s-playground/playground.k8s.h3poteto.dev
@@ -46,7 +49,7 @@ spec:
     allowContainerRegistry: true
     legacy: false
   kubeProxy:
-    enabled: false
+    enabled: true
   kubelet:
     anonymousAuth: false
     authenticationTokenWebhook: true
@@ -55,22 +58,23 @@ spec:
   kubernetesApiAccess:
   - 0.0.0.0/0
   - ::/0
-  kubernetesVersion: 1.28.7
+  kubernetesVersion: 1.29.5
   masterPublicName: api.playground.k8s.h3poteto.dev
   networkCIDR: 172.16.0.0/16
   networkID: vpc-00ea717e1640613ea
   networking:
-    cilium:
-      ipam: eni
-      enableNodePort: true
+    amazonvpc: {}
+    # cilium:
+    #   ipam: eni
+    #   enableNodePort: true
   nodeTerminationHandler:
     enabled: false
   nonMasqueradeCIDR: 100.64.0.0/10
   serviceAccountIssuerDiscovery:
     discoveryStore: s3://h3poteto-irsa-discovery-store
     enableAWSOIDCProvider: true
-  awsLoadBalancerController:
-    enabled: true
+  # awsLoadBalancerController:
+  #   enabled: true
   podIdentityWebhook:
     enabled: true
   certManager:
@@ -206,8 +210,6 @@ spec:
   role: Node
   subnets:
   - ap-northeast-1a
-  taints:
-  - node.cilium.io/agent-not-ready=true:NoExecute
 
 ---
 
@@ -235,8 +237,6 @@ spec:
   role: Node
   subnets:
   - ap-northeast-1c
-  taints:
-  - node.cilium.io/agent-not-ready=true:NoExecute
 
 ---
 
@@ -264,8 +264,6 @@ spec:
   role: Node
   subnets:
   - ap-northeast-1d
-  taints:
-  - node.cilium.io/agent-not-ready=true:NoExecute
 
 ---
 
