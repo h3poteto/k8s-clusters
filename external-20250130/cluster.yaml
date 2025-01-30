@@ -2,7 +2,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: null
-  name: playground.k8s.h3poteto.dev
+  name: external-20250130.k8s.h3poteto.dev
 spec:
   api:
     dns: {}
@@ -10,9 +10,13 @@ spec:
     rbac: {}
   authentication:
     aws: {}
+  certManager:
+    enabled: true
+    managed: true
   channel: stable
   cloudProvider: aws
-  configBase: s3://h3poteto-k8s-playground/playground.k8s.h3poteto.dev
+  configBase: s3://h3poteto-k8s-clusters/external-20250130.k8s.h3poteto.dev
+  dnsZone: Z21DTFU4BHSZ51
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
@@ -58,40 +62,37 @@ spec:
   - 0.0.0.0/0
   - ::/0
   kubernetesVersion: 1.30.8
-  masterPublicName: api.playground.k8s.h3poteto.dev
-  networkCIDR: 172.16.0.0/16
-  networkID: vpc-00ea717e1640613ea
+  masterPublicName: api.external-20250130.k8s.h3poteto.dev
+  networkCIDR: 10.0.0.0/16
+  networkID: vpc-fb354b9c
   networking:
     amazonvpc: {}
   nodeTerminationHandler:
     enabled: false
-  serviceAccountIssuerDiscovery:
-    discoveryStore: s3://h3poteto-irsa-discovery-store
-    enableAWSOIDCProvider: true
-  # awsLoadBalancerController:
-  #   enabled: true
+  nonMasqueradeCIDR: 100.64.0.0/10
   podIdentityWebhook:
     enabled: true
-  certManager:
-    enabled: true
-    managed: true
-  nonMasqueradeCIDR: 172.16.0.0/16
+  serviceAccountIssuerDiscovery:
+    additionalAudiences:
+    - sts.amazonaws.com
+    discoveryStore: s3://oidc-e48482ce-6383-e525-f779-775960546dcf
+    enableAWSOIDCProvider: true
   sshAccess:
   - 0.0.0.0/0
   - ::/0
   subnets:
-  - id: subnet-0619c5276e1edce32
-    cidr: 172.16.0.0/20
+  - cidr: 10.0.0.0/20
+    id: subnet-fa7f7fb3
     name: ap-northeast-1a
     type: Public
     zone: ap-northeast-1a
-  - id: subnet-04acc221370b74258
-    cidr: 172.16.16.0/20
+  - cidr: 10.0.16.0/20
+    id: subnet-70bbc92b
     name: ap-northeast-1c
     type: Public
     zone: ap-northeast-1c
-  - id: subnet-06d07ea961e7e0007
-    cidr: 172.16.32.0/20
+  - cidr: 10.0.32.0/20
+    id: subnet-f45541dc
     name: ap-northeast-1d
     type: Public
     zone: ap-northeast-1d
@@ -106,7 +107,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
@@ -117,12 +118,16 @@ spec:
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
+  capacityRebalance: false
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1a
 
@@ -133,7 +138,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
@@ -144,12 +149,16 @@ spec:
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
+  capacityRebalance: false
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1c
 
@@ -160,7 +169,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
@@ -171,12 +180,16 @@ spec:
   mixedInstancesPolicy:
     instances:
     - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
+  capacityRebalance: false
   role: Master
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1d
 
@@ -187,23 +200,25 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: nodes-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
-  machineType: t3.small
-  maxSize: 1
+  machineType: t3.medium
+  maxPrice: "0.05"
+  maxSize: 2
   minSize: 1
-  maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-    - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
   role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1a
 
@@ -214,23 +229,25 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: nodes-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
-  machineType: t3.small
-  maxSize: 1
+  machineType: t3.medium
+  maxPrice: "0.05"
+  maxSize: 2
   minSize: 1
-  maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-    - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
   role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1c
 
@@ -241,23 +258,25 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: nodes-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20241211
-  machineType: t3.small
-  maxSize: 1
+  machineType: t3.medium
+  maxPrice: "0.05"
+  maxSize: 2
   minSize: 1
-  maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-    - t3.small
-    - t2.small
+    - t3.medium
+    - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
-    spotAllocationStrategy: lowest-price
-    spotInstancePools: 2
+    spotAllocationStrategy: price-capacity-optimized
   role: Node
+  rootVolumeSize: 20
+  rootVolumeType: gp2
+  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1d
 
@@ -267,7 +286,7 @@ kind: SSHCredential
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: playground.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
   name: admin
 spec:
   publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/3jS1oMtOQo3mXtqA/y1dHhUtsuvpFA6oAQ0qEyP6b akira@kinugawa
