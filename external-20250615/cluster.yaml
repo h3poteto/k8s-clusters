@@ -51,6 +51,11 @@ spec:
   iam:
     allowContainerRegistry: true
     legacy: false
+  kubeDNS:
+    nodeLocalDNS:
+      enabled: true
+      forwardToKubeDNS: true
+    provider: CoreDNS
   kubeProxy:
     enabled: true
   kubelet:
