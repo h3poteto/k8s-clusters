@@ -7,14 +7,14 @@ metadata:
     k8s-app: aws-iam-authenticator
 data:
   config.yaml: |
-    clusterID: external-20250130.k8s.h3poteto.dev
+    clusterID: external-20250618.k8s.h3poteto.dev
     server:
       # each mapRoles entry maps an IAM role to a username and set of groups
       # Each username and group can optionally contain template parameters:
       #  1) "{{AccountID}}" is the 12 digit AWS ID.
       #  2) "{{SessionName}}" is the role session name.
       mapRoles:
-      - roleARN: arn:aws:iam::564677439943:role/masters.external-20250130.k8s.h3poteto.dev
+      - roleARN: arn:aws:iam::564677439943:role/masters.external-20250618.k8s.h3poteto.dev
         username: kubernetes-admin
         groups:
         - system:masters
@@ -23,7 +23,7 @@ data:
       # trust that the role can only be assumed by EC2 instances. If an IAM user
       # can assume this role directly (with sts:AssumeRole) they can control
       # SessionName.
-      - roleARN: arn:aws:iam::564677439943:role/nodes.external-20250130.k8s.h3poteto.dev
+      - roleARN: arn:aws:iam::564677439943:role/nodes.external-20250618.k8s.h3poteto.dev
         username: aws:{{AccountID}}:instance:{{SessionName}}
         groups:
         - system:bootstrappers
@@ -33,7 +33,7 @@ data:
       # like an e-mail address passed by the identity provider. Note that if this
       # role is assumed directly by an IAM User (not via federation), the user
       # can control the SessionName.
-      - roleARN: arn:aws:iam::564677439943:role/masters.external-20250130.k8s.h3poteto.dev
+      - roleARN: arn:aws:iam::564677439943:role/masters.external-20250618.k8s.h3poteto.dev
         username: admin:{{SessionName}}
         groups:
         - system:masters

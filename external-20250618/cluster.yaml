@@ -2,7 +2,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: null
-  name: external-20250130.k8s.h3poteto.dev
+  name: external-20250618.k8s.h3poteto.dev
 spec:
   api:
     dns: {}
@@ -15,7 +15,7 @@ spec:
     managed: true
   channel: stable
   cloudProvider: aws
-  configBase: s3://h3poteto-k8s-clusters/external-20250130.k8s.h3poteto.dev
+  configBase: s3://h3poteto-k8s-clusters/external-20250618.k8s.h3poteto.dev
   dnsZone: Z21DTFU4BHSZ51
   etcdClusters:
   - cpuRequest: 200m
@@ -52,7 +52,7 @@ spec:
     allowContainerRegistry: true
     legacy: false
   kubeProxy:
-    enabled: true
+    enabled: false
   kubelet:
     anonymousAuth: false
     authenticationTokenWebhook: true
@@ -62,20 +62,21 @@ spec:
   - 0.0.0.0/0
   - ::/0
   kubernetesVersion: 1.31.8
-  masterPublicName: api.external-20250130.k8s.h3poteto.dev
+  masterPublicName: api.external-20250618.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
   networking:
-    amazonvpc: {}
+    cilium:
+      enableNodePort: true
+  nonMasqueradeCIDR: 100.64.0.0/10
   nodeTerminationHandler:
     enabled: false
-  nonMasqueradeCIDR: 100.64.0.0/10
   podIdentityWebhook:
     enabled: true
   serviceAccountIssuerDiscovery:
     additionalAudiences:
     - sts.amazonaws.com
-    discoveryStore: s3://oidc-e48482ce-6383-e525-f779-775960546dcf
+    discoveryStore: s3://oidc-5f3a2223-002b-d5d3-00bc-9bf1e0c6af25
     enableAWSOIDCProvider: true
   sshAccess:
   - 0.0.0.0/0
@@ -107,7 +108,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -127,7 +128,6 @@ spec:
   role: Master
   rootVolumeSize: 10
   rootVolumeType: gp3
-  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1a
 
@@ -138,7 +138,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -158,7 +158,6 @@ spec:
   role: Master
   rootVolumeSize: 10
   rootVolumeType: gp3
-  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1c
 
@@ -169,7 +168,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: control-plane-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -189,7 +188,6 @@ spec:
   role: Master
   rootVolumeSize: 10
   rootVolumeType: gp3
-  securityGroupOverride: sg-0110c581f1db6223d
   subnets:
   - ap-northeast-1d
 
@@ -200,7 +198,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: nodes-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -218,7 +216,6 @@ spec:
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp3
-  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1a
 
@@ -229,7 +226,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: nodes-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -247,7 +244,6 @@ spec:
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp3
-  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1c
 
@@ -258,7 +254,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: nodes-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
@@ -276,17 +272,17 @@ spec:
   role: Node
   rootVolumeSize: 20
   rootVolumeType: gp3
-  securityGroupOverride: sg-02c91c8f054c85937
   subnets:
   - ap-northeast-1d
 
+---
 ---
 apiVersion: kops.k8s.io/v1alpha2
 kind: SSHCredential
 metadata:
   creationTimestamp: null
   labels:
-    kops.k8s.io/cluster: external-20250130.k8s.h3poteto.dev
+    kops.k8s.io/cluster: external-20250618.k8s.h3poteto.dev
   name: admin
 spec:
   publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/3jS1oMtOQo3mXtqA/y1dHhUtsuvpFA6oAQ0qEyP6b akira@kinugawa
