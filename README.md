@@ -1,12 +1,12 @@
 ## Create cluster
 ```
-$ kops create cluster external-prd-20200329.k8s.h3poteto.dev --zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-count 3 --master-zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-size t3.medium --master-size t3.small
+$ kops create cluster $CLUSTER_NAME --zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-count 3 --master-zones ap-northeast-1a,ap-northeast-1c,ap-northeast-1d --node-size t3.medium --master-size t3.small
 ```
 
 Edit this cluster before apply. And apply it.
 
 ```
-$ kops update cluster --lifecycle-overrides IAMRole=ExistsAndWarnIfChanges,IAMRolePolicy=ExistsAndWarnIfChanges,IAMInstanceProfileRole=ExistsAndWarnIfChanges  --name external-prd-20200329.k8s.h3poteto.dev --yes
+$ kops update cluster --name $CLUSTER_NAME --create-kube-config --admin --yes
 ```
 
 
@@ -17,7 +17,7 @@ You can edit cluster or instancegroup.
 Edit cluster.
 
 ```bash
-$ kops edit cluster external-prd-20200329.k8s.h3poteto.dev
+$ kops edit cluster $CLUSTER_NAME
 ```
 
 Edit master instancegroup. You have to edit each master instance.
@@ -41,7 +41,7 @@ At first, update cluster definition.
 Then rolling update the cluster to replace all master and node instances.
 
 ```bash
-$ kops update cluster --yes --admin --lifecycle-overrides IAMRole=ExistsAndWarnIfChanges,IAMRolePolicy=ExistsAndWarnIfChanges,IAMInstanceProfileRole=ExistsAndWarnIfChanges
+$ kops update cluster --yes --admin --create-kube-config
 ```
 
 Sometimes the command show some differences about iam role, please ignore it. I added required policy to role, but kops added the poliyc as inline policy, so the differences are appear. But it is no problem.
