@@ -61,7 +61,7 @@ spec:
   kubernetesApiAccess:
     - 0.0.0.0/0
     - ::/0
-  kubernetesVersion: 1.32.8
+  kubernetesVersion: 1.32.11
   masterPublicName: api.external-20250618.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
@@ -111,13 +111,12 @@ metadata:
   name: control-plane-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
-  machineType: t3.small
+  machineType: t3.medium
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-      - t3.small
       - t3.medium
       - t2.medium
     onDemandAboveBase: 0
@@ -140,13 +139,12 @@ metadata:
   name: control-plane-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
-  machineType: t3.small
+  machineType: t3.medium
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-      - t3.small
       - t3.medium
       - t2.medium
     onDemandAboveBase: 0
@@ -169,13 +167,12 @@ metadata:
   name: control-plane-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20250425
-  machineType: t3.small
+  machineType: t3.medium
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
-      - t3.small
       - t3.medium
       - t2.medium
     onDemandAboveBase: 0
