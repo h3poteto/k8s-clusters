@@ -61,7 +61,7 @@ spec:
   kubernetesApiAccess:
     - 0.0.0.0/0
     - ::/0
-  kubernetesVersion: 1.32.11
+  kubernetesVersion: 1.33.7
   masterPublicName: api.external-20250618.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
