@@ -3,6 +3,33 @@ kind: Cluster
 metadata:
   name: external-20260324.k8s.h3poteto.dev
 spec:
+  # https://docs.cilium.io/en/latest/network/concepts/ipam/eni/#required-privileges
+  # cilium-operator is located to both master and node.
+  # However, node does not have enough permissions to execute cilium-operator.
+  additionalPolicies:
+    node: |
+      [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "ec2:DescribeNetworkInterfaces",
+            "ec2:DescribeSubnets",
+            "ec2:DescribeVpcs",
+            "ec2:DescribeRouteTables",
+            "ec2:DescribeSecurityGroups",
+            "ec2:DescribeInstances",
+            "ec2:DescribeTags",
+            "ec2:CreateNetworkInterface",
+            "ec2:AttachNetworkInterface",
+            "ec2:ModifyNetworkInterfaceAttribute",
+            "ec2:DeleteNetworkInterface",
+            "ec2:AssignPrivateIpAddresses",
+            "ec2:UnassignPrivateIpAddresses",
+            "ec2:CreateTags"
+          ],
+          "Resource": "*"
+        }
+      ]
   api:
     dns: {}
   authorization:
