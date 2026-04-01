@@ -264,3 +264,14 @@ spec:
   rootVolumeType: gp3
   subnets:
     - ap-northeast-1d
+
+---
+
+apiVersion: kops.k8s.io/v1alpha2
+kind: SSHCredential
+metadata:
+  labels:
+    kops.k8s.io/cluster: external-20260324.k8s.h3poteto.dev
+  name: admin
+spec:
+  publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/3jS1oMtOQo3mXtqA/y1dHhUtsuvpFA6oAQ0qEyP6b akira@kinugawa
