@@ -110,20 +110,23 @@ metadata:
   name: control-plane-ap-northeast-1a
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
-  machineType: t3.medium
+  machineType: t3.small
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
   capacityRebalance: false
   role: Master
-  rootVolumeSize: 10
+  rootVolumeSize: 20
   rootVolumeType: gp3
   subnets:
     - ap-northeast-1a
@@ -138,20 +141,23 @@ metadata:
   name: control-plane-ap-northeast-1c
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
-  machineType: t3.medium
+  machineType: t3.small
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
   capacityRebalance: false
   role: Master
-  rootVolumeSize: 10
+  rootVolumeSize: 20
   rootVolumeType: gp3
   subnets:
     - ap-northeast-1c
@@ -166,20 +172,23 @@ metadata:
   name: control-plane-ap-northeast-1d
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
-  machineType: t3.medium
+  machineType: t3.small
   maxSize: 1
   minSize: 1
   maxPrice: "0.03"
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
   capacityRebalance: false
   role: Master
-  rootVolumeSize: 10
+  rootVolumeSize: 20
   rootVolumeType: gp3
   subnets:
     - ap-northeast-1d
@@ -195,12 +204,15 @@ metadata:
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
   machineType: t3.medium
-  maxPrice: "0.05"
+  maxPrice: "0.03"
   maxSize: 2
   minSize: 1
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
@@ -222,12 +234,15 @@ metadata:
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
   machineType: t3.medium
-  maxPrice: "0.05"
+  maxPrice: "0.03"
   maxSize: 2
   minSize: 1
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
@@ -249,12 +264,15 @@ metadata:
 spec:
   image: 099720109477/ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-20251212
   machineType: t3.medium
-  maxPrice: "0.05"
+  maxPrice: "0.03"
   maxSize: 2
   minSize: 1
   mixedInstancesPolicy:
     instances:
+      - t3.small
       - t3.medium
+      - t3a.small
+      - t3a.medium
       - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
