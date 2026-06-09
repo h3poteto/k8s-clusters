@@ -60,7 +60,7 @@ spec:
   kubernetesApiAccess:
   - 0.0.0.0/0
   - ::/0
-  kubernetesVersion: 1.35.2
+  kubernetesVersion: 1.35.5
   masterPublicName: api.external-20260324.k8s.h3poteto.dev
   networkCIDR: 10.0.0.0/16
   networkID: vpc-fb354b9c
@@ -113,14 +113,11 @@ spec:
   machineType: t3.small
   maxSize: 1
   minSize: 1
-  maxPrice: "0.03"
+  maxPrice: "0.02"
   mixedInstancesPolicy:
     instances:
       - t3.small
-      - t3.medium
       - t3a.small
-      - t3a.medium
-      - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
@@ -144,14 +141,11 @@ spec:
   machineType: t3.small
   maxSize: 1
   minSize: 1
-  maxPrice: "0.03"
+  maxPrice: "0.02"
   mixedInstancesPolicy:
     instances:
       - t3.small
-      - t3.medium
       - t3a.small
-      - t3a.medium
-      - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
@@ -175,14 +169,11 @@ spec:
   machineType: t3.small
   maxSize: 1
   minSize: 1
-  maxPrice: "0.03"
+  maxPrice: "0.02"
   mixedInstancesPolicy:
     instances:
       - t3.small
-      - t3.medium
       - t3a.small
-      - t3a.medium
-      - t2.medium
     onDemandAboveBase: 0
     onDemandBase: 0
     spotAllocationStrategy: price-capacity-optimized
